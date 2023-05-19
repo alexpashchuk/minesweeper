@@ -1,10 +1,11 @@
-import { initMatrix } from './js/matrix'
+import { createBoard } from './js/Board'
 
 let width = 10
 let height = 10
+let bombCount = 10
 
 const createMinesweeper = () => {
-    initMatrix(width, height)
+    createBoard(width, height, bombCount)
 }
 
 createMinesweeper()

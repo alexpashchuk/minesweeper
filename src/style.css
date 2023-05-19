@@ -28,10 +28,135 @@ h6 {
 
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     background-color: lightgray;
     font-size: 20px;
     font-weight: 400;
     font-family: Roboto, Arial, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.title {
+    text-align: center;
+}
+
+.minesweeper {
+    display: grid;
+    grid-template-columns: repeat(10, 30px);
+    border: 4px outset white;
+    padding: 10px;
+    background: lightgray;
+}
+
+.minesweeper.start {
+    border: 4px outset white;
+    padding: 10px;
+    background: lightgray;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    font-weight: 600;
+}
+
+.cell.init {
+    border: 4px outset white;
+    cursor: pointer;
+}
+
+.settings {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.size,
+.bombs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.bomb-1 {
+    color: blue;
+}
+
+.bomb-2 {
+    color: green;
+}
+
+.bomb-3 {
+    color: red;
+}
+
+.bomb-4 {
+    color: darkblue;
+}
+
+.bomb-5 {
+    color: brown;
+}
+
+.bomb-count-6 {
+    color: turquoise;
+}
+
+.bomb-7 {
+    color: black;
+}
+
+.bomb-8 {
+    color: white;
+}
+
+.modal {
+    position: absolute;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    scale: 1;
+    visibility: visible;
+    opacity: 1;
+    background: deepskyblue;
+    transition: all 0.6s ease-in-out;
+}
+
+.modal > h2 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modal.closed {
+    display: flex;
+    background: lightgray;
+    visibility: hidden;
+    opacity: 0;
+    scale: 0;
+}
+
+.modal.closed > h2 {
+    visibility: hidden;
+    opacity: 0;
 }
