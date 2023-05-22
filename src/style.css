@@ -189,15 +189,56 @@ body {
     scale: 0.9;
 }
 
+.select {
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #7e9bbd;
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 2px 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.select::-ms-expand {
+    display: none;
+}
+
+.select:focus {
+    outline: none;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 120px;
+}
+
+.select-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8.7px 5px 0 5px;
+    border-color: #0b6dd6 transparent transparent transparent;
+    pointer-events: none;
+}
+
 input[type='range'] {
     -webkit-appearance: none;
     background-color: rgb(255, 255, 255, 0.8);
-    height: 10px;
-    width: 80px;
+    height: 11px;
+    width: 100px;
     outline: none;
     cursor: pointer;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 35px;
 }
 
 input[type='range']::-moz-range-track {
@@ -207,10 +248,10 @@ input[type='range']::-moz-range-track {
 
 input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none !important;
-    background: #0991b0;
-    height: 35px;
+    background: royalblue;
+    height: 11px;
     width: 15px;
-    border-radius: 5px;
+    border-radius: 35px;
     box-shadow: -103px 0 0 100px #0991b0;
 }
 
@@ -260,9 +301,8 @@ input[type='range']::-ms-fill-upper {
     right: 0;
     bottom: 0;
     background-color: lightsteelblue;
-    -webkit-transition: 0.4s;
     transition: 0.4s;
-    border-radius: 34px;
+    border-radius: 50px;
 }
 
 .slider:before {
@@ -273,7 +313,6 @@ input[type='range']::-ms-fill-upper {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
 }
@@ -287,9 +326,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
 }
 
 body.dark {

@@ -17,11 +17,13 @@ const initGameLayout = () => {
         <div class="settings">
         <div class="size">
          <label id="labelSize" for="size">Level</label>
-         <select id="level" name=level>
+         <div class="select-wrapper">
+          <select id="level" name=level class="select">
            <option value="easy" selected>Easy(10x10)</option>
            <option value="medium" >Medium(15x15)</option>
           <option value="hard">Hard(25x25)</option>
-         </select>
+         </select> 
+          </div>
           </div>
          <div class="bombs">
           <label id="labelRange" for="bombs">Bombs Count(10-99)</label>
