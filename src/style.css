@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Digital Dismay';
+    src: url('./assets/fonts/Digital Dismay.otf') format('truetype');
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -29,7 +34,7 @@ h6 {
 body {
     display: flex;
     background-color: lightgray;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     font-family: Roboto, Arial, sans-serif;
 }
@@ -48,35 +53,23 @@ body {
     text-align: center;
 }
 
-.minesweeper {
+.board {
     display: grid;
-    grid-template-columns: repeat(10, 30px);
     border: 4px outset white;
     padding: 10px;
     background: lightgray;
 }
 
-.minesweeper.start {
-    border: 4px outset white;
-    padding: 10px;
-    background: lightgray;
+.board.easy {
+    grid-template-columns: repeat(10, 1fr);
 }
 
-.cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    background-color: lightgray;
-    border: 1px solid gray;
-    border-collapse: collapse;
-    font-weight: 600;
+.board.medium {
+    grid-template-columns: repeat(15, 1fr);
 }
 
-.cell.init {
-    border: 4px outset white;
-    cursor: pointer;
+.board.hard {
+    grid-template-columns: repeat(25, 1fr);
 }
 
 .settings {
@@ -85,6 +78,7 @@ body {
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    font-size: 16px;
 }
 
 .size,
@@ -96,67 +90,232 @@ body {
     gap: 10px;
 }
 
-.bomb-1 {
+.bombs-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-color: lightgray;
+    border: 3px outset white;
+    border-collapse: collapse;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 45px;
+}
+
+.cell.blow {
+    background-color: red;
+}
+
+.cell.opened {
+    border: 1px solid gray;
+}
+
+.cell.bomb {
+    background-color: red;
+}
+
+.cell.blue {
     color: blue;
 }
 
-.bomb-2 {
+.cell.green {
     color: green;
 }
 
-.bomb-3 {
+.cell.red {
     color: red;
 }
 
-.bomb-4 {
+.cell.dark-blue {
     color: darkblue;
 }
 
-.bomb-5 {
+.cell.brown {
     color: brown;
 }
 
-.bomb-count-6 {
+.cell.turquoise {
     color: turquoise;
 }
 
-.bomb-7 {
+.cell.black {
     color: black;
 }
 
-.bomb-8 {
+.cell.white {
     color: white;
 }
 
-.modal {
-    position: absolute;
-    justify-content: center;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-    scale: 1;
-    visibility: visible;
-    opacity: 1;
-    background: deepskyblue;
-    transition: all 0.6s ease-in-out;
-}
-
-.modal > h2 {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.modal.closed {
+.score {
     display: flex;
-    background: lightgray;
-    visibility: hidden;
-    opacity: 0;
-    scale: 0;
+    gap: 30px;
 }
 
-.modal.closed > h2 {
-    visibility: hidden;
+.count {
+    font-family: 'Digital Dismay', Roboto, Arial, sans-serif;
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: red;
+    background-color: black;
+    text-align: center;
+    padding: 4px 4px 0 7px;
+    line-height: 1em;
+}
+
+.restart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 39px;
+    height: 39px;
+    font-size: 28px;
+    cursor: pointer;
+    border: 3px outset white;
+    background-color: lightgray;
+}
+
+.restart:active {
+    scale: 0.9;
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    background-color: rgb(255, 255, 255, 0.8);
+    height: 10px;
+    width: 80px;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+input[type='range']::-moz-range-track {
+    border: none;
+    background: #ffffff6b;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: #0991b0;
+    height: 35px;
+    width: 15px;
+    border-radius: 5px;
+    box-shadow: -103px 0 0 100px #0991b0;
+}
+
+input[type='range']::-moz-range-thumb {
+    border: none;
+    border-radius: 15px;
+    background: #0991b0;
+    height: 35px;
+    width: 15px;
+    box-shadow: -101px 0 0 100px #0991b0;
+}
+
+input[type='range']::-ms-thumb {
+    -webkit-appearance: none;
+    background: #0991b0;
+    height: 35px;
+    width: 15px;
+    border-radius: 5px;
+}
+
+input[type='range']::-ms-fill-lower {
+    background-color: rgb(255, 255, 255, 0.8);
+}
+
+input[type='range']::-ms-fill-upper {
+    background-color: rgb(255, 255, 255, 0.8);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.switch input {
     opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: lightsteelblue;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: deepskyblue;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px deepskyblue;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+body.dark {
+    background: lightslategray;
+    transition: all 0.2s;
+}
+
+body.dark .board {
+    border: 4px outset lightsteelblue;
+    background: lightslategray;
+}
+
+body.dark .cell {
+    border: 3px outset lightsteelblue;
+    background: lightslategray;
+}
+
+body.dark .cell.opened {
+    border: 1px solid darkslategray;
+}
+body.dark .settings,
+body.dark .title {
+    color: white;
+}
+
+body.dark .restart {
+    border: 3px outset lightsteelblue;
+    background: lightslategray;
 }
