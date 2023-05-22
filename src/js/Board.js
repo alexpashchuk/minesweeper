@@ -2,15 +2,15 @@ import { createBox } from './Box'
 import { colors, randomInteger, updateFlags } from './utils'
 import { initTimer } from '../index'
 
-const clickSound = new Audio('../assets/sounds/click.wav')
+const clickSound = new Audio('./assets/sounds/click.wav')
 clickSound.volume = 0.1
-const flagSound = new Audio('../assets/sounds/flag.wav')
+const flagSound = new Audio('./assets/sounds/flag.wav')
 flagSound.volume = 0.1
-const unflagSound = new Audio('../assets/sounds/unflag.wav')
+const unflagSound = new Audio('./assets/sounds/unflag.wav')
 unflagSound.volume = 0.1
-const winSound = new Audio('../assets/sounds/win.wav')
+const winSound = new Audio('./assets/sounds/win.wav')
 winSound.volume = 0.1
-const lostSound = new Audio('../assets/sounds/lost.wav')
+const lostSound = new Audio('./assets/sounds/lost.wav')
 lostSound.volume = 0.1
 class Board {
     constructor(width, height, bombs, restartBtn, flagElem, timerId) {
