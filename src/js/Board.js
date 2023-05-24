@@ -189,6 +189,7 @@ class Board {
             winSound.play()
             clearInterval(this.timerId)
             this.restartBtn.innerHTML = '😎'
+            alert('Win')
         }
     }
 
