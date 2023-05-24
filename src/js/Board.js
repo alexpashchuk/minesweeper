@@ -13,7 +13,7 @@ winSound.volume = 0.1
 const lostSound = new Audio('./assets/sounds/lost.wav')
 lostSound.volume = 0.1
 class Board {
-    constructor(width, height, bombs, restartBtn, flagElem, timerId) {
+    constructor(width, height, bombs, restartBtn, modal, modalText, flagElem, timerId) {
         this.width = width
         this.height = height
         this.bombsCount = bombs
@@ -23,6 +23,8 @@ class Board {
         this.firstTerm = false
         this.flags = bombs
         this.restartBtn = restartBtn
+        this.modal = modal
+        this.modalText = modalText
         this.flagElem = flagElem
         this.timerId = timerId
     }
@@ -189,7 +191,8 @@ class Board {
             winSound.play()
             clearInterval(this.timerId)
             this.restartBtn.innerHTML = '😎'
-            alert('Win')
+            this.modal.classList.add('active')
+            this.modalText.innerHTML = 'You Win'
         }
     }
 
@@ -210,7 +213,8 @@ class Board {
         this.restartBtn.innerHTML = '🙁'
         lostSound.play()
         clearInterval(this.timerId)
-        alert('Lost')
+        this.modal.classList.add('active')
+        this.modalText.innerHTML = 'You Lost'
     }
 
     addClickHandler() {
@@ -231,8 +235,8 @@ class Board {
     }
 }
 
-const createBoard = (width, height, bombs, restartBtn, flagElem, timerId) => {
-    const newBoard = new Board(width, height, bombs, restartBtn, flagElem, timerId)
+const createBoard = (width, height, bombs, restartBtn, modal, modalText, flagElem, timerId) => {
+    const newBoard = new Board(width, height, bombs, restartBtn, modal, modalText, flagElem, timerId)
     newBoard.render()
     return newBoard
 }

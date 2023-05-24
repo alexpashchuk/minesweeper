@@ -38,6 +38,8 @@ const input = document.getElementById('bombs-value')
 const timerElem = document.querySelector('.timer')
 const flagElem = document.querySelector('.flag')
 const restartBtn = document.querySelector('.restart')
+const modal = document.querySelector('.modal')
+const modalText = document.querySelector('.modal-text')
 input.innerHTML = bombs
 
 const createMinesweeper = () => {
@@ -50,6 +52,8 @@ const createMinesweeper = () => {
         gameLevel[`${currentLevel}`].width,
         bombs,
         restartBtn,
+        modal,
+        modalText,
         flagElem,
         timerId
     )
@@ -67,6 +71,10 @@ restartBtn.addEventListener('click', function () {
 
 document.getElementById('bombs').addEventListener('input', function () {
     input.innerHTML = this.value
+})
+
+document.querySelector('.modal-close').addEventListener('click', function () {
+    modal.classList.remove('active')
 })
 
 document.getElementById('bombs').addEventListener('change', function () {

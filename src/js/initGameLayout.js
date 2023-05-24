@@ -33,6 +33,10 @@ const initGameLayout = () => {
            </div>
          </div>
         </div>
+        <div class="modal">
+        <p class="modal-text"></p>
+        <div class="modal-close">X</div>
+        </div>
     </main>`
     )
 }

@@ -358,3 +358,46 @@ body.dark .restart {
     border: 3px outset lightsteelblue;
     background: lightslategray;
 }
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1px;
+    background: lightgray;
+    border: 3px outset white;
+    color: red;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    opacity: 1;
+}
+
+.modal.active {
+    width: 300px;
+    height: 50px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-close {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    padding: 2px;
+    color: black;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: red;
+}
